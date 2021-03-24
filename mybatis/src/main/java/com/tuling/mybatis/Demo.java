@@ -6,6 +6,7 @@ import java.io.InputStream;
 
 import com.tuling.mybatis.dao.AdminMapper;
 import com.tuling.mybatis.dao.AdminMapper2;
+import com.tuling.mybatis.dao.AdminMapper3;
 import com.tuling.mybatis.pojo.Admin;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -22,7 +23,7 @@ public class Demo {
     @Before
     public void init() throws IOException {
         //1.读取配置文件
-        InputStream in = Resources.getResourceAsStream("mybatis-config.xml");
+        InputStream in = Resources.getResourceAsStream("mybatis-config2.xml");
         //2.创建SqlSessionFactory的构建者对象
         SqlSessionFactoryBuilder builder = new SqlSessionFactoryBuilder();
         //3.使用构建者创建工厂对象
@@ -80,6 +81,14 @@ public class Demo {
     public void testCache4() {
         AdminMapper mapper = session.getMapper(AdminMapper.class);
         mapper.updateAdmin(new Admin(1, "123", "123"));
+    }
+
+    @Test
+    public void testCache5() {
+        AdminMapper3 mapper = session.getMapper(AdminMapper3.class);
+        Admin admin = mapper.selectById(1);
+        System.out.println(admin);
+
     }
 
 }

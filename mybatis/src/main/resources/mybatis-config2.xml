@@ -1,15 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE configuration
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
 <configuration>
-
-    <typeHandlers>
-        <typeHandler handler="com.tuling.mybatis.handler.LongTimeHandler" javaType="long" jdbcType="TIMESTAMP"/>
-    </typeHandlers>
-
     <environments default="development">
-        <environment id="development">
+        <environment id="delelopment">
             <transactionManager type="JDBC"/>
             <dataSource type="POOLED">
                 <property name="driver" value="com.mysql.jdbc.Driver"/>
@@ -21,10 +17,7 @@
     </environments>
 
     <mappers>
-        <mapper resource="com/tuling/mybatis/dao/AdminMapper.xml"/>
-        <mapper resource="com/tuling/mybatis/dao/AdminMapper2.xml"/>
-<!--        <mapper resource="com/tuling/mybatis/dao/AdminMapper3.xml"/>-->
-        <package name="com.tuling.mybatis.dao"/>
+        <mapper class="com.tuling.mybatis.dao.AdminMapper3"/>
     </mappers>
 
 </configuration>
